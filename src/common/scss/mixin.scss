@@ -1,0 +1,68 @@
+// 不换行
+@mixin no-wrap() {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@mixin jsonHtml() {
+  pre {
+    font-size: 0;
+  }
+  .string {
+    color: green;
+    white-space: normal;
+    word-break: break-all;
+  }
+  .number {
+    color: darkorange;
+    white-space: normal;
+    word-break: break-all;
+  }
+  .boolean {
+    color: blue;
+    white-space: normal;
+    word-break: break-all;
+  }
+  .null {
+    color: magenta;
+    white-space: normal;
+    word-break: break-all;
+  }
+  .key {
+    color: red;
+  }
+  .tr-line {
+    vertical-align: top;
+    font-size: 12px;
+    display: inline-block;
+    box-sizing: border-box;
+    .td-right {
+      float: left;
+      width: 100%;
+      word-break: break-all;
+    }
+  }
+}
+.novo-modal-footer{
+  padding: 13px 18px 0px 18px;
+  text-align: right;
+  position: relative;
+  width: 100%;
+  bottom: -5px;
+  // overflow: hidden;
+
+}
+.novo-modal-footer::after {            
+  content: "";       
+  display: inline-block;
+  position: absolute;
+  height: 1px;
+  left: -15px;
+  // width: 150%;
+  top: 0;
+  right: -15px;
+  background:  #e8eaec;
+  // width: 1      
+      
+}
