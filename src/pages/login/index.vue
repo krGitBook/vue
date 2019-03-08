@@ -3,6 +3,19 @@
 </template>
 <script>
 export default {
+   beforeRouteEnter(to, from, next) {
+    console.log("组件内 beforeRouteEnter");
+
+    next();
+  },
+  beforeRouteUpdate(to, from, next) {
+    console.log("组件内 beforeRouteUpdate");
+    next();
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log("组件内 beforeRouteLeave",this.$route.path);
+    next();
+  },
   data(){
     return {
       name: ''
@@ -18,7 +31,7 @@ export default {
          type+= to.params.type
       }
       this.name = type
-      console.log(to,from)
+      // console.log(to,from)
     }
   }
 
