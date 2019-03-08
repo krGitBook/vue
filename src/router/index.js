@@ -11,15 +11,15 @@ export default new Router({
   fallback:false, //当浏览器不支持 history.pushState 控制路由是否应该回退到 hash 模式
   // linkActiveClass:'class-active',
   // linkExactActiveClass:'class-active',
-  scrollBehavior(to, from, savedPostion){
-    console.log("-------",savedPostion)
-    if (savedPostion) {
-      return savedPosition
-    } else {
-      return { x: 0, y: 0 }
-    }
+  // scrollBehavior(to, from, savedPostion){
+  //   console.log("-------",savedPostion)
+  //   if (savedPostion) {
+  //     return savedPosition
+  //   } else {
+  //     return { x: 0, y: 0 }
+  //   }
 
-  },
+  // },
   // parseQuery(query){
   //   console.log("111111",query)
   //   return event+1;
