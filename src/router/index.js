@@ -9,8 +9,8 @@ export default new Router({
   mode: 'history',
   base:'/app/',
   fallback:false, //当浏览器不支持 history.pushState 控制路由是否应该回退到 hash 模式
-  // linkActiveClass:'class-active',
-  // linkExactActiveClass:'class-active',
+  linkActiveClass:'class-active',
+  // linkExactActiveClass:'class-active-a',
   // scrollBehavior(to, from, savedPostion){
   //   console.log("-------",savedPostion)
   //   if (savedPostion) {
@@ -18,7 +18,6 @@ export default new Router({
   //   } else {
   //     return { x: 0, y: 0 }
   //   }
-
   // },
   // parseQuery(query){
   //   console.log("111111",query)
@@ -29,20 +28,29 @@ export default new Router({
   // },
   routes: [{
     path: '/home',
+    redirect:'/login',
     component: Home,
     beforeEnter: (to, from, next) => {
       console.log('路由配置中的 beforeEnter')
       next();
     }
-  },{
+  },
+  {
     path: '/login',
     name:'login',
     component: Login,
-
-  },{
+    children: [
+      {
+        path: 'home',
+        name:'otehr',
+        component: Home
+      }
+    ]
+  },
+  {
     path: '/login/:type',
     name:'login',
-    component: Login,
+    component: Login
   },{
     path: '/',
     name:'otehr',
