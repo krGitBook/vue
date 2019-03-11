@@ -27,8 +27,8 @@
 
 <script>
 import LabelInput from './LabelInput'
-import { createNamespacedHelpers } from "vuex";
-const { mapActions,mapState,mapGetters } = createNamespacedHelpers('a')
+import { mapActions,mapState,mapGetters } from "vuex";
+// const { mapActions,mapState,mapGetters } = createNamespacedHelpers('a')
 
 export default {
   components:{
@@ -40,19 +40,19 @@ export default {
     };
   },
   computed:{
-    ...mapGetters([
+    ...mapGetters('a',[
        'getList'
     ]),
-    ...mapState({
+    ...mapState('a',{
       list: state => {
-        
-        return state.a.list
+
+        return state.list
       },
     })
   },
 
   methods:{
-    ...mapActions([
+    ...mapActions('a',[
        'add'
     ]),
     mousemove(){
@@ -60,7 +60,7 @@ export default {
     }
   },
   mounted(){
-   
+
   },
 };
 </script>

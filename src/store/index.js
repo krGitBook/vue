@@ -19,6 +19,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { mutations, STORAGE_KEY } from './mutations'
 import actions from './actions';
+import b from './todoItem';
 import demo from './demo';
 
 
@@ -26,6 +27,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules:{
-     a:demo
+     a:demo,
+     b:b
   }
 })

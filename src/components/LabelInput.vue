@@ -1,7 +1,7 @@
 <template>
   <div>
     {{label}}
-    <input type="text"  
+    <input type="text"
         v-bind="$attrs"
         v-bind:value="value"
         v-on="inputListeners">
@@ -36,9 +36,6 @@ export default {
           },
           keyup:()=>{
             console.log("keyup")
-          },
-          click:()=>{
-            console.log("click")
           }
         }
       )
