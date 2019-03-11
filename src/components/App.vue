@@ -9,7 +9,7 @@
         autofocus
         autocomplete="off"
         placeholder="What needs ?"
-        @keyup.enter="add"
+        @keyup.enter="$store.dispatch('add',$event)"
       >
     </header>
 
@@ -38,7 +38,7 @@ export default {
     ]),
     ...mapState({
       list: state => state.a.list,
-  })
+    })
   },
   methods:{
     ...mapActions([
