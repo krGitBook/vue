@@ -1,6 +1,6 @@
 <template>
   <h1>{{name}} <router-view/></h1>
-  
+
 </template>
 <script>
 export default {
@@ -21,6 +21,9 @@ export default {
     return {
       name: ''
     }
+  },
+  mounted(){
+  console.log("________oo");
   },
    watch: {
     '$route' (to, from) {

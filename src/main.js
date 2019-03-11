@@ -22,6 +22,8 @@ router.beforeEach((to, from, next) => {
   // }
   // console.log("-beforeEach",to,from,next)
   console.log("全局 beforeEach")
+  console.log(router.currentRoute,"======--000",router.app)
+  // console.log(router.app,"======--000")
   next()
 })
 router.beforeResolve((to, from, next)=>{
@@ -33,6 +35,7 @@ router.afterEach((to, from) => {
   console.log('全局 afterEach')
   // ...
 })
+
 router.onReady((val)=>{
   console.log('onReady',val)
 })

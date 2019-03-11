@@ -1,17 +1,33 @@
 <template>
-  <div style="height:2000px;background:red;">home</div>
+  <div style="padding:30px;">home</div>
 </template>
 <script>
 export default {
+   beforeRouteEnter(to, from, next) {
+    console.log("组件内 beforeRouteEnter");
 
-  mounted() {
-    // this.$router.push({path:'/'})
-    //  this.$router.replace()
-    //  this.$router.go()
-    //  this.$router.back()
-    //  this.$router.forward()
+    next();
+  },
+  beforeRouteUpdate(to, from, next) {
+    console.log("组件内 beforeRouteUpdate");
+    next();
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log("组件内 beforeRouteLeave",this.$route.path);
+    next();
+  },
+   data(){
+     return {
+
+     }
+   },
+   watch: {
+    '$route' (to, from) {
+
+    }
   }
-};
+}
 </script>
 <style lang="scss">
+
 </style>

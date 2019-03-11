@@ -4,7 +4,7 @@ import Home from '@/pages/home'
 import Login from '@/pages/login'
 import other from '@/pages/other'
 Vue.use(Router)
-
+console.log(Router.currentRoute,"======")
 export default new Router({
   mode: 'history',
   base: '/app/',
@@ -32,27 +32,30 @@ export default new Router({
   // },
   routes: [{
     path: '/home',
+    redirect:'/login', //重定向
     component: Home,
     beforeEnter: (to, from, next) => {
       console.log('路由配置中的 beforeEnter')
       next();
     }
-  }, {
+  },
+  {
     path: '/login',
     name: 'login',
     component: Login,
-    children: [{
-      path: '',
-      component: Home,
-    }
-
+    children: [
+      {
+        path: 'home',
+        name:'otehr',
+        component: Home
+      }
     ]
-
-  }, {
+  },
+  {
     path: '/login/:type',
-    name: 'login',
-    component: Login,
-  }, {
+    name:'login',
+    component: Login
+  },{
     path: '/',
     name: 'otehr',
     component: other,

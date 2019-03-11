@@ -9,62 +9,27 @@
         autofocus
         autocomplete="off"
         placeholder="What needs ?"
-        @keyup.enter="addTodo"
+        @keyup.enter="$store.dispatch('add',$event)"
       >
     </header>
 
-    <!-- main section -->
-    <section class="main" v-show="todos.length">
-      <input
-        class="toggle-all"
-        id="toggle-all"
-        type="checkbox"
-        :checked="allChecked"
-        @change="toggleAll(!allChecked)"
-      >
-      <label for="toggle-all"></label>
-      <ul class="todo-list">
-        <TodoItem v-for="(todo, index) in filteredTodos" :key="index" :todo="todo"/>
-      </ul>
-    </section>
-    <!-- footer -->
-    <footer class="footer" v-show="todos.length">
-      <span class="todo-count">
-        <strong>{{ remaining }}</strong>
-        {{ remaining | pluralize('item') }} left
-      </span>
-      <ul class="filters">
-        <li v-for="(val, key) in filters" :key="key" class="btn">
-          <a
-            :href="'#/' + key"
-            :class="{ selected: visibility === key }"
-            @click="visibility = key"
-          >{{ key | capitalize }}</a>
-        </li>
-      </ul>
-      <button
-        class="clear-completed"
-        v-show="todos.length > remaining"
-        @click="clearCompleted"
-      >Clear completed</button>
-    </footer>
+    <div
+     v-for="(item,index) in getList"
+     :key="index"
+    >
+       {{item.value}}
+    </div>
+
   </section>
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import TodoItem from "./TodoItem.vue";
-
-const filters = {
-  all: todos => todos,
-  active: todos => todos.filter(todo => !todo.done),
-  completed: todos => todos.filter(todo => todo.done)
-};
+import { mapActions,mapState,mapGetters } from "vuex";
 
 export default {
-  components: { TodoItem },
   data() {
     return {
+<<<<<<< HEAD
       visibility: "all",
       filters: filters,
     };
@@ -93,10 +58,23 @@ export default {
       }
       e.target.value = "";
     }
+=======
+
+    };
   },
-  filters: {
-    pluralize: (n, w) => (n === 1 ? w : w + "s"),
-    capitalize: s => s.charAt(0).toUpperCase() + s.slice(1)
+  computed:{
+    ...mapGetters([
+       'getList'
+    ]),
+    ...mapState({
+      list: state => state.a.list,
+    })
+>>>>>>> b0d37c0c964411ce455577ab9eed7ae5d484842b
+  },
+  methods:{
+    ...mapActions([
+       'add'
+    ])
   }
 };
 </script>
