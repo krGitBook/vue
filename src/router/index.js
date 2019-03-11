@@ -7,19 +7,22 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-  base:'/app/',
-  fallback:false, //当浏览器不支持 history.pushState 控制路由是否应该回退到 hash 模式
+  base: '/app/',
+  fallback: false, //当浏览器不支持 history.pushState 控制路由是否应该回退到 hash 模式
   // linkActiveClass:'class-active',
   // linkExactActiveClass:'class-active',
-  // scrollBehavior(to, from, savedPostion){
-  //   console.log("-------",savedPostion)
-  //   if (savedPostion) {
-  //     return savedPosition
-  //   } else {
-  //     return { x: 0, y: 0 }
-  //   }
+  scrollBehavior(to, from, savedPostion){
+    console.log("-------",to,from)
+    if(to.fullPath == '/home'){
+      return { x: 0, y: 500 }
+    }
+    // if (savedPostion) {
+    //   return savedPosition
+    // } else {
+    //   return { x: 0, y: 0 }
+    // }
 
-  // },
+  },
   // parseQuery(query){
   //   console.log("111111",query)
   //   return event+1;
@@ -34,18 +37,24 @@ export default new Router({
       console.log('路由配置中的 beforeEnter')
       next();
     }
-  },{
+  }, {
     path: '/login',
-    name:'login',
+    name: 'login',
     component: Login,
+    children: [{
+      path: '',
+      component: Home,
+    }
 
-  },{
+    ]
+
+  }, {
     path: '/login/:type',
-    name:'login',
+    name: 'login',
     component: Login,
-  },{
+  }, {
     path: '/',
-    name:'otehr',
+    name: 'otehr',
     component: other,
   }]
 })

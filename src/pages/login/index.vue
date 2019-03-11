@@ -1,5 +1,6 @@
 <template>
-  <h1>{{name}} </h1>
+  <h1>{{name}} <router-view/></h1>
+  
 </template>
 <script>
 export default {
