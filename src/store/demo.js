@@ -1,24 +1,28 @@
-export default{
-  state:{
-    list:[]
+export default {
+  namespaced:true,
+  state: {
+    list: []
   },
-  mutations:{
-     add:function(state,data){
-      console.log('state--------90==',state);
-         state.list.push(data);
-     }
-  },
-  actions:{
-    add:function(store,data){
-        console.log('date--------90',data);
-        store.commit('add',{value:data.target.value,checked:false})
+  mutations: {
+    add: function (state, data) {
+      // setTimeout(()=>{
+      state.list.push(data);
+      // },1000)
+
     }
   },
-  getters:{
-    getList:function(state,getters){
-      return state.list.map((item)=>{
-          item.value='$'+item.value;
-          return item
+  actions: {
+    add: function (store, data) {
+      store.commit('add', { value: data.target.value, checked: false })
+    }
+  },
+  getters: {
+    getList(state) {
+      let arr = [].concat(state.list)
+      return arr.map((item) => {
+        let obj = Object.assign({}, item)
+        obj.value = '$' + obj.value;
+        return obj;
       })
     }
   }
